@@ -13,7 +13,7 @@ case $1 in
 		else
 			echo "Updating and starting grav"
 			cd /var/www/grav
-			git fetch --all
+			git fetch --all --tags
 			git checkout ${BRANCH}
 		fi
 		chown -R www-data:www-data /var/www

@@ -8,6 +8,8 @@ case $1 in
 			git clone -b ${BRANCH} https://github.com/getgrav/grav.git
 			cd /var/www/grav
 			bin/grav install
+			echo "Installing admin plugin"
+			bin/gpm install admin -y
 		else
 			echo "Updating and starting grav"
 			cd /var/www/grav

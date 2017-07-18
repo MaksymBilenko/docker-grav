@@ -7,10 +7,10 @@ case $1 in
 			cd /var/www
 
 			git clone https://github.com/getgrav/grav.git
+			cd /var/www/grav
+			
 			git fetch --all --tags
 			git checkout ${BRANCH}
-
-			cd /var/www/grav
 
 			bin/grav install
 
@@ -19,7 +19,7 @@ case $1 in
 		else
 			echo "Updating and starting grav"
 			cd /var/www/grav
-			
+
 			git fetch --all --tags
 			git checkout ${BRANCH}
 		fi

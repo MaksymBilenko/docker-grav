@@ -14,12 +14,8 @@ RUN a2enmod rewrite && a2dissite 000-default && a2ensite grav
 
 ENV BRANCH develop
 
-#RUN git clone -b ${BRANCH} https://github.com/getgrav/grav.git /var/www/grav && chown -R www-data:www-data /var/www/grav
-
 WORKDIR /var/www/grav
 
 ADD entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-
-#RUN su www-data -s /bin/bash -c 'cd /var/www/grav/ && ./bin/grav install && bin/gpm install admin -y'

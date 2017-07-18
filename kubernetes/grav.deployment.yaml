@@ -1,0 +1,28 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: grav-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: grav
+        env: dev
+        branch: 1.3.0
+    spec:
+      volumes:
+      - name: grav-volume
+        persistentVolumeClaim:
+         claimName: grav-volume
+      containers:
+      - name: grav
+        image: sath89/grav:latest
+        env:
+        - name: BRANCH
+          value: tags/1.3.0
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: "/var/www/grav"
+          name: grav-volume

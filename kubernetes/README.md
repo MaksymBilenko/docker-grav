@@ -1,10 +1,16 @@
 # Local minikube volume example
 	
-Edit minikube-grav.pv.yaml and replace `{USER_HOME}` to your PWD like /Users/username
+	#Start and check minikube instance
 
+	minikube start
+	kubectl version
+
+	#Create PersistentVolume and PersistentVolumeClaim for grav data
+	cd docker-grav/kubernetes
+	
 	kubectl create -f minikube-grav.pv.yaml #Optional for prod clusters
 	kubectl create -f grav.pvc.yaml
-	
+
 	#Create deployment and service example
 	kubectl create -f grav.deployment.yaml
 	kubectl expose deployment grav-deployment --type=NodePort
